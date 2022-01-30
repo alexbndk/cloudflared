@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/devynbit/cloudflare_dev.git"
-  spec.metadata["changelog_uri"] = "https://github.com/devynbit/cloudflare_dev/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/devynbit/cloudflare_dev/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
