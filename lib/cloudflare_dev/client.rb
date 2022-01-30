@@ -32,10 +32,15 @@ module CloudflareDev
       @stubs = stubs
     end
 
+    # Accesses the Cloudflare Images developer platform
     def images
       ImagesResource.new(self)
     end
 
+    # Creates a new connection with the given request type.
+    #
+    # @!attribute request_type
+    #   @return [JSON] The request type to use (e.g. application/json)
     def connection(request_type: :json)
       @connection ||= Faraday.new do |conn|
         conn.url_prefix = "#{BASE_URL}/#{@account_id}"
