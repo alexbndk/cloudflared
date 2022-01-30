@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "ZxR0pLaXRldlBtaFhhO2FiZGVnaA",
+    "filename": "avatar.png",
+    "metadata": {
+      "meta": "metaID"
+    },
+    "requireSignedURLs": true,
+    "variants": [
+      "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail",
+      "https//imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero",
+      "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original"
+    ],
+    "uploaded": "2014-01-02T02:20:00Z"
+  }
+}

@@ -10,7 +10,11 @@ TEST_BASE_URL = "/client/v4/accounts/fake"
 
 class Minitest::Test
   def stub_response(fixture:, status: 200, headers: {"Content-Type" => "application/json"})
-    [status, headers, File.read("test/fixtures/#{fixture}.json")]
+    if headers.dig("Content-Type").include? "application/json"
+      [status, headers, File.read("test/fixtures/#{fixture}.json")]
+    else
+      [status, headers, File.read("test/fixtures/#{fixture}")]
+    end
   end
 
   def stub_request(path, response:, method: :get, body: {})

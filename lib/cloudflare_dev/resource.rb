@@ -13,9 +13,8 @@ module CloudflareDev
       handle_response client.connection.get(url, params, default_headers.merge(headers))
     end
 
-    def post_request(url, body:, params: {}, headers: {})
-      params[:body] = body
-      handle_response client.connection.post(url, params, default_headers.merge(headers))
+    def post_request(url, body:, headers: {})
+      handle_response client.connection.post(url, body, default_headers.merge(headers))
     end
 
     def upload_request(url, file:, params: {}, headers: {})
@@ -27,14 +26,12 @@ module CloudflareDev
       handle_response client.connection(request_type: :multipart).post(url, params, default_headers.merge(headers))
     end
 
-    def put_request(url, body:, params: {}, headers: {})
-      params[:body] = body
-      handle_response client.connection.put(url, params, default_headers.merge(headers))
+    def put_request(url, body:, headers: {})
+      handle_response client.connection.put(url, body, default_headers.merge(headers))
     end
 
-    def patch_request(url, body:, params: {}, headers: {})
-      params[:body] = body
-      handle_response client.connection.patch(url, params, default_headers.merge(headers))
+    def patch_request(url, body:, headers: {})
+      handle_response client.connection.patch(url, body, default_headers.merge(headers))
     end
 
     def delete_request(url, params: {}, headers: {})
@@ -48,7 +45,7 @@ module CloudflareDev
     def handle_response(response)
 
       if response.body.is_a? Hash
-        message = response.body["errors"].map{ |error| error["message"]}.join(" ")
+        message = response.body["errors"]&.map{ |error| error["message"]}&.join(" ")
       else
         message = response.body.inspect
       end
