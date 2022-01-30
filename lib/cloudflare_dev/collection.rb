@@ -1,8 +1,12 @@
 module CloudflareDev
   class Collection
+    include Enumerable
+
     MAX_PER_PAGE = 100
 
-    def self.from_response(response, key: "images", type: Cloudflare::Images::Image)
+    attr_reader :data, :success, :errors, :page, :per_page
+
+    def self.from_response(response, key:, type:)
       body = response.body["result"]
       new(
         data: body[key].map { |attrs| type.new(attrs) },
@@ -19,6 +23,10 @@ module CloudflareDev
       @messages = messages
       @page = page
       @per_page = per_page
+    end
+
+    def each(&block)
+      @data.each(&block)
     end
   end
 end

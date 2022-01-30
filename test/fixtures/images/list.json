@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "images": [
+      {
+        "id": "ZxR0pLaXRldlBtaFhhO2FiZGVnaA",
+        "filename": "avatar.png",
+        "metadata": {
+          "meta": "metaID"
+        },
+        "requireSignedURLs": true,
+        "variants": [
+          "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail",
+          "https//imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero",
+          "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original"
+        ],
+        "uploaded": "2014-01-02T02:20:00Z"
+      },
+      {
+        "id": "MTt4OTd0b0w5aj00gby320DKbzh2",
+        "filename": "avatar2.png",
+        "metadata": {
+          "meta": "metaID"
+        },
+        "requireSignedURLs": true,
+        "variants": [
+          "https://imagedelivery.net/MTt4OTd0b0w5aj/MTt4OTd0b0w5aj00gby320DKbzh2/thumbnail",
+          "https://imagedelivery.net/MTt4OTd0b0w5aj/MTt4OTd0b0w5aj00gby320DKbzh2/hero",
+          "https://imagedelivery.net/MTt4OTd0b0w5aj/MTt4OTd0b0w5aj00gby320DKbzh2/original"
+        ],
+        "uploaded": "2014-01-02T02:20:00Z"
+      }
+    ]
+  }
+}
