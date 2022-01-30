@@ -1,8 +1,8 @@
 # CloudflareDev
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cloudflare_dev`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem provides API access to the Cloudflare developer platform. 
 
-TODO: Delete this and the text above, and describe your gem
+Current support: Cloudflare Images
 
 ## Installation
 
@@ -22,10 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
+Working with Cloudflare Images:
+
 ```ruby
-client = CloudflareDev::Client.new(api_key: "foo", account_id: "bar")
+client = CloudflareDev::Client.new(api_key: "foo", account_id: "bar", images_hash: "baz")
+client.images.delete(file_id: "1234")
+client.images.details(file_id: "1234")
+client.images.direct_upload_url
+client.images.download(file_id: "1234")
 client.images.list
-client.images.detail("foobar")
+client.images.signed_url(file_id: "1234", key: "default_key", expiry_seconds: 60 * 15)
+client.images.stats
+client.images.update(file_id: "1234", requireSignedURLs: true)
+client.images.upload(file: "/path/to/file", requireSignedURLs: true)
 ```
 
 ## Development
@@ -36,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cloudflare_dev. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/cloudflare_dev/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/devynbit/cloudflare_dev. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/cloudflare_dev/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
