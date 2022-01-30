@@ -10,6 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    backports (3.23.0)
     faraday (2.1.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
@@ -40,6 +41,13 @@ GEM
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     unicode-display_width (2.1.0)
+    webrick (1.7.0)
+    yard (0.9.27)
+      webrick (~> 1.7.0)
+    yard-junk (0.0.9)
+      backports (>= 3.18)
+      rainbow
+      yard
 
 PLATFORMS
   arm64-darwin-21
@@ -49,6 +57,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   rake (~> 13.0)
   rubocop (~> 1.21)
+  yard-junk
 
 BUNDLED WITH
    2.3.5

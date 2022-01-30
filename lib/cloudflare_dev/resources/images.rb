@@ -1,7 +1,14 @@
+require "openssl"
 require "pathname"
 
 module CloudflareDev
   class ImagesResource < Resource
+
+    # ONE_DAY = 60 * 60 * 24
+    # ONE_HOUR = 60 * 60
+    # THIRTY_MINUTES = 60 * 30
+    FIFTEEN_MINUTES = 60 * 15
+    IMAGE_DELIVERY_URL = "https://imagedelivery.net"
 
     def delete(file_id:, **params)
       delete_request("images/v1/#{file_id}", params: params)
@@ -22,6 +29,22 @@ module CloudflareDev
 
     def list(**params)
       Collection.from_response get_request("images/v1", params: params), key: "images", type: Image
+    end
+
+    def signed_url(path, key:, expiry_seconds: FIFTEEN_MINUTES)
+      # The path uses the image + the file_id (and a variant if passed through)
+      path = path[1..] if path[0] == "/"
+      path = "#{@client.images_hash}/#{path}"
+
+      # Calculate the hexdigest with the  leading slash
+      sig = OpenSSL::HMAC.hexdigest("SHA256", key, "/#{path}")
+
+      # Calculate the seconds since the epoch in the future
+      exp = Time.new.to_i + expiry_seconds
+
+      # Respond with the url
+      qry = path.include?("?") ? "&" : "?"
+      "#{IMAGE_DELIVERY_URL}/#{path}#{qry}sig=#{sig}&exp=#{exp}"
     end
 
     def stats(**params)

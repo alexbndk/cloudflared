@@ -55,6 +55,36 @@ class ImagesResourceTest < Minitest::Test
     assert_equal 2, images.count
   end
 
+  def test_signed_url_signature
+    # key = "this is a secret"
+    path = "world"
+    fifteen_minutes = 60 * 15
+    expected = "https://imagedelivery.net/hello/world?sig=6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34&exp=#{Time.new.to_i + fifteen_minutes}"
+    client = CloudflareDev::Client.new(api_key: "fake", account_id: "fake", images_hash: "hello")
+    url = client.images.signed_url(path, key: "this is a secret")
+    assert_equal expected, url
+  end
+
+  def test_signed_url_signature_without_leading_slash
+    # key = "this is a secret"
+    path = "world"
+    fifteen_minutes = 60 * 15
+    expected = "https://imagedelivery.net/hello/world?sig=6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34&exp=#{Time.new.to_i + fifteen_minutes}"
+    client = CloudflareDev::Client.new(api_key: "fake", account_id: "fake", images_hash: "hello")
+    url = client.images.signed_url(path, key: "this is a secret")
+    assert_equal expected, url
+  end
+
+  def test_signed_url_signature_with_expiry
+    # key = "this is a secret"
+    path = "world"
+    one_day = 60 * 60 * 24
+    expected = "https://imagedelivery.net/hello/world?sig=6293f9144b4e9adc83416d1b059abcac750bf05b2c5c99ea72fd47cc9c2ace34&exp=#{Time.new.to_i + one_day}"
+    client = CloudflareDev::Client.new(api_key: "fake", account_id: "fake", images_hash: "hello")
+    url = client.images.signed_url(path, key: "this is a secret", expiry_seconds: one_day)
+    assert_equal expected, url
+  end
+
   def test_stats
     stub = stub_request("images/v1/stats", response: stub_response(fixture: "images/stats"), method: :get)
     client = CloudflareDev::Client.new(api_key: "fake", account_id: "fake", stubs: stub)
