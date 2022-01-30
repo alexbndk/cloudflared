@@ -16,10 +16,10 @@ module CloudflareDev
       ImagesResource.new(self)
     end
 
-    def connection
+    def connection(request_type: :json)
       @connection ||= Faraday.new do |conn|
         conn.url_prefix = "#{BASE_URL}/#{@account_id}"
-        conn.request :json
+        conn.request request_type
         conn.response :json, content_type: "application/json"
       end
     end

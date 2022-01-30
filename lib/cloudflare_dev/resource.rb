@@ -1,3 +1,7 @@
+require "faraday"
+require "marcel"
+require "faraday/multipart"
+
 module CloudflareDev
   class Resource
     attr_reader :client
@@ -9,20 +13,32 @@ module CloudflareDev
       handle_response client.connection.get(url, params, default_headers.merge(headers))
     end
 
-    def post_request(url, body:, headers: {})
-      handle_response client.connection.post(url, body, default_headers.merge(headers))
+    def post_request(url, body:, params: {}, headers: {})
+      params[:body] = body
+      handle_response client.connection.post(url, params, default_headers.merge(headers))
     end
 
-    def put_request(url, body:, headers: {})
-      handle_response client.connection.put(url, body, default_headers.merge(headers))
+    def upload_request(url, file:, params: {}, headers: {})
+      params[:file] = Faraday::Multipart::FilePart.new(
+        file,
+        Marcel::MimeType.for(Pathname.new(file))
+      )
+
+      handle_response client.connection(request_type: :multipart).post(url, params, default_headers.merge(headers))
     end
 
-    def patch_request(url, body:, headers: {})
-      handle_response client.connection.patch(url, body, default_headers.merge(headers))
+    def put_request(url, body:, params: {}, headers: {})
+      params[:body] = body
+      handle_response client.connection.put(url, params, default_headers.merge(headers))
+    end
+
+    def patch_request(url, body:, params: {}, headers: {})
+      params[:body] = body
+      handle_response client.connection.patch(url, params, default_headers.merge(headers))
     end
 
     def delete_request(url, params: {}, headers: {})
-      handle_response client.connection.post(url, params, default_headers.merge(headers))
+      handle_response client.connection.delete(url, params, default_headers.merge(headers))
     end
 
     def default_headers
@@ -30,26 +46,31 @@ module CloudflareDev
     end
 
     def handle_response(response)
-      message = response.body["errors"].map{ |error| error["message"]}
-      message = message.join(" ")
+
+      if response.body.is_a? Hash
+        message = response.body["errors"].map{ |error| error["message"]}.join(" ")
+      else
+        message = response.body.inspect
+      end
+
 
       case response.status
       when 400
-        raise Error, message
+        raise Error, "Bad request, the request was invalid. #{message}"
       when 401
-        raise Error, message
+        raise Error, "Unauthorized, the user does not have permission. #{message}"
       when 403
-        raise Error, message
+        raise Error, "Forbidden, the request was not authenticated. #{message}"
       when 404
-        raise Error, message
+        raise Error, "Not found, the resource was not found. #{message}"
       when 429
-        raise Error, message
+        raise Error, "Too many requests, client is rate limited. #{message}"
       when 405
-        raise Error, message
+        raise Error, "Method not allowed, incorrect HTTP method provided. #{message}"
       when 415
-        raise Error, message
+        raise Error, "Unsupported media type, response is not valid JSON. #{message}"
       when 500
-        raise Error, message
+        raise Error, "Server error. #{message}"
       else
         response
       end

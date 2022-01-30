@@ -4,7 +4,6 @@ module CloudflareDev
 
     def self.from_response(response, key: "images", type: Cloudflare::Images::Image)
       body = response.body["result"]
-      puts body.inspect
       new(
         data: body[key].map { |attrs| type.new(attrs) },
         success: body["success"],
