@@ -30,6 +30,10 @@ module CloudflareDev
       Collection.from_response get_request("images/v1", params: params), key: "images", type: Image
     end
 
+    def public_url(path)
+      "#{IMAGE_DELIVERY_URL}/#{@client.images_hash}/#{path}"
+    end
+
     def signed_url(path, key:, expiry_seconds: FIFTEEN_MINUTES)
       # The path uses the image + the file_id (and a variant if passed through)
       path = path[1..] if path[0] == "/"

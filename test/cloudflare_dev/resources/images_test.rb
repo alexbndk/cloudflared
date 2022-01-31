@@ -55,6 +55,13 @@ class ImagesResourceTest < Minitest::Test
     assert_equal 2, images.count
   end
 
+  def test_public_url
+    expected = "https://imagedelivery.net/hello/world"
+    client = CloudflareDev::Client.new(api_key: "fake", account_id: "fake", images_hash: "hello")
+    url = client.images.public_url("world")
+    assert_equal expected, url
+  end
+
   def test_signed_url_signature
     # key = "this is a secret"
     path = "world"
