@@ -1,4 +1,4 @@
-module CloudflareDev
+module Cloudflared
   class Image < Object
     def inspect
       "Image id=#{id}, filename=#{filename}"

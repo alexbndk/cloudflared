@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in cloudflare_dev.gemspec
+# Specify your gem's dependencies in cloudflared.gemspec
 gemspec
 
 gem "rake", "~> 13.0"

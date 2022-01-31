@@ -2,7 +2,7 @@ require "faraday"
 require "marcel"
 require "faraday/multipart"
 
-module CloudflareDev
+module Cloudflared
   class Resource
     attr_reader :client
     def initialize(client)

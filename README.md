@@ -1,7 +1,7 @@
-# CloudflareDev
+# Cloudflared
 
-[![Build Status](https://github.com/devynbit/cloudflare_dev/actions/workflows/main.yml/badge.svg)](https://github.com/devynbit/cloudflare_dev/actions) 
-[![Gem Version](https://badge.fury.io/rb/cloudflare_dev.svg)](https://badge.fury.io/rb/cloudflare_dev)
+[![Build Status](https://github.com/devynbit/cloudflared/actions/workflows/main.yml/badge.svg)](https://github.com/devynbit/cloudflared/actions) 
+[![Gem Version](https://badge.fury.io/rb/cloudflared.svg)](https://badge.fury.io/rb/cloudflared)
 
 This gem provides API access to the Cloudflare developer platform. 
 
@@ -12,7 +12,7 @@ Current support: Cloudflare Images
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cloudflare_dev'
+gem 'cloudflared'
 ```
 
 And then execute:
@@ -21,14 +21,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cloudflare_dev
+    $ gem install cloudflared
 
 ## Usage
 
 Working with Cloudflare Images:
 
 ```ruby
-client = CloudflareDev::Client.new(api_key: "foo", account_id: "bar", images_hash: "baz")
+client = Cloudflared::Client.new(api_key: "foo", account_id: "bar", images_hash: "baz")
 client.images.delete(file_id: "1234")
 client.images.details(file_id: "1234")
 client.images.direct_upload_url
@@ -48,7 +48,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/devynbit/cloudflare_dev. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/devynbit/cloudflare_dev/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/devynbit/cloudflared. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/devynbit/cloudflared/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -56,4 +56,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the CloudflareDev project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/devynbit/cloudflare_dev/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Cloudflared project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/devynbit/cloudflared/blob/main/CODE_OF_CONDUCT.md).

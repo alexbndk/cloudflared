@@ -7,11 +7,11 @@ class CollectionTest < Minitest::Test
   def setup
     response = OpenStruct.new({body: {}})
     response.body = JSON.parse(File.read("test/fixtures/images/list.json"))
-    @collection = CloudflareDev::Collection.from_response(response, key: "images", type: CloudflareDev::Image)
+    @collection = Cloudflared::Collection.from_response(response, key: "images", type: Cloudflared::Image)
   end
 
   def test_responds_to_enumerable_methods
-    assert_equal CloudflareDev::Collection, @collection.class
+    assert_equal Cloudflared::Collection, @collection.class
     assert @collection.respond_to? :each
     assert @collection.respond_to? :map
     assert @collection.respond_to? :select

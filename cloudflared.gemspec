@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative "lib/cloudflare_dev/version"
+require_relative "lib/cloudflared/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "cloudflare_dev"
-  spec.version = CloudflareDev::VERSION
+  spec.name = "cloudflared"
+  spec.version = Cloudflared::VERSION
   spec.authors = ["devynbit"]
   spec.email = ["devynbit@users.noreply.github.com"]
 
   spec.summary = "API wrapper for the Cloudflare developer platform"
   spec.description = "An API wrapper that focuse on the Cloudflare developer APIs, such as images, stream, pages, and workers."
-  spec.homepage = "https://github.com/devynbit/cloudflare_dev"
+  spec.homepage = "https://github.com/devynbit/cloudflared"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/devynbit/cloudflare_dev.git"
-  spec.metadata["changelog_uri"] = "https://github.com/devynbit/cloudflare_dev/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/devynbit/cloudflared.git"
+  spec.metadata["changelog_uri"] = "https://github.com/devynbit/cloudflared/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

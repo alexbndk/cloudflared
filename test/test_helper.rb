@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
-require "cloudflare_dev"
+require "cloudflared"
 require "minitest/autorun"
 require "faraday"
 require "json"

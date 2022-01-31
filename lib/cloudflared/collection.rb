@@ -1,4 +1,4 @@
-module CloudflareDev
+module Cloudflared
   class Collection
     include Enumerable
 

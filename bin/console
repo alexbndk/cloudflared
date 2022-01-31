@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "cloudflare_dev"
+require "cloudflared"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -11,7 +11,7 @@ require "cloudflare_dev"
 # require "pry"
 # Pry.start
 
-@client = CloudflareDev::Client.new(account_id: ENV["CLOUDFLARE_IMAGES_ACCOUNT_ID"], api_key: ENV["CLOUDFLARE_IMAGES_API_KEY"])
+@client = Cloudflared::Client.new(account_id: ENV["CLOUDFLARE_IMAGES_ACCOUNT_ID"], api_key: ENV["CLOUDFLARE_IMAGES_API_KEY"])
 
 require "irb"
 IRB.start(__FILE__)

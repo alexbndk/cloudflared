@@ -1,6 +1,6 @@
 require "faraday"
 
-module CloudflareDev
+module Cloudflared
   class Client
     BASE_URL = "https://api.cloudflare.com/client/v4/accounts"
 
@@ -23,7 +23,7 @@ module CloudflareDev
     # @!attribute stubs
     #   @return [Symbol] Stubs for use in testing
     #
-    # @return [CloudflareDev]
+    # @return [Cloudflared]
     def initialize(api_key:, account_id:, images_hash: nil, adapter: Faraday.default_adapter, stubs: nil)
       @api_key = api_key
       @adapter = adapter

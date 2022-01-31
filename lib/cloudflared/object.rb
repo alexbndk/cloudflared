@@ -1,6 +1,6 @@
 require "ostruct"
 
-module CloudflareDev
+module Cloudflared
   class Object < OpenStruct
     def initialize(attributes)
       super to_ostruct(attributes)

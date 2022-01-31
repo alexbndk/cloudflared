@@ -1,4 +1,4 @@
-# CloudflareDev Changes
+# Cloudflared Changes
 
 ## [0.1.3] - 2022-01-29
 

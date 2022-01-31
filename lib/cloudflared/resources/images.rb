@@ -1,7 +1,7 @@
 require "openssl"
 require "pathname"
 
-module CloudflareDev
+module Cloudflared
   class ImagesResource < Resource
     # ONE_DAY = 60 * 60 * 24
     # ONE_HOUR = 60 * 60
