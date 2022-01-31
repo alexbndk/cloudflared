@@ -1,5 +1,8 @@
 # CloudflareDev
 
+[![Build Status](https://github.com/devynbit/cloudflare_dev/actions/workflows/main.yml/badge.svg)](https://github.com/devynbit/cloudflare_dev/actions) 
+[![Gem Version](https://badge.fury.io/rb/cloudflare_dev.svg)](https://badge.fury.io/rb/cloudflare_dev)
+
 This gem provides API access to the Cloudflare developer platform. 
 
 Current support: Cloudflare Images
