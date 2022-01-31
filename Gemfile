@@ -9,8 +9,6 @@ gem "rake", "~> 13.0"
 
 gem "minitest", "~> 5.0"
 
-gem "rubocop", "~> 1.21"
+gem "yard-junk"
 
-group :development, :lint do
-  gem 'yard-junk'
-end
+gem "standard", "~> 1.7"

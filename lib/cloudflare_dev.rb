@@ -12,4 +12,3 @@ module CloudflareDev
   autoload :Image, "cloudflare_dev/objects/image"
   autoload :ImagesResource, "cloudflare_dev/resources/images"
 end
-

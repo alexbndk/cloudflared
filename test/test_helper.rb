@@ -21,7 +21,7 @@ class Minitest::Test
     Faraday::Adapter::Test::Stubs.new do |stub|
       arguments = [method, "#{TEST_BASE_URL}/#{path}"]
       arguments << body.to_json if [:post, :put, :patch].include?(method)
-      stub.send(*arguments) { |_env| response}
+      stub.send(*arguments) { |_env| response }
     end
   end
 end

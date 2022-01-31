@@ -3,7 +3,6 @@ require "pathname"
 
 module CloudflareDev
   class ImagesResource < Resource
-
     # ONE_DAY = 60 * 60 * 24
     # ONE_HOUR = 60 * 60
     # THIRTY_MINUTES = 60 * 30

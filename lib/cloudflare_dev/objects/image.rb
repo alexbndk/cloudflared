@@ -1,11 +1,11 @@
 module CloudflareDev
   class Image < Object
     def inspect
-      "Image id=#{self.id}, filename=#{self.filename}"
+      "Image id=#{id}, filename=#{filename}"
     end
 
-    def <=>(other_image)
-      self.id <=> other_image.id
+    def <=>(other)
+      id <=> other.id
     end
   end
 end

@@ -43,13 +43,11 @@ module CloudflareDev
     end
 
     def handle_response(response)
-
-      if response.body.is_a? Hash
-        message = response.body["errors"]&.map{ |error| error["message"]}&.join(" ")
+      message = if response.body.is_a? Hash
+        response.body["errors"]&.map { |error| error["message"] }&.join(" ")
       else
-        message = response.body.inspect
+        response.body.inspect
       end
-
 
       case response.status
       when 400
