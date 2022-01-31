@@ -62,7 +62,6 @@ DEPENDENCIES
   cloudflare_dev!
   minitest (~> 5.0)
   rake (~> 13.0)
-  rubocop (~> 1.21)
   standard (~> 1.7)
   yard-junk
 
