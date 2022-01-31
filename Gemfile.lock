@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloudflare_dev (0.1.0)
+    cloudflare_dev (0.1.1)
       faraday (~> 2.1.0)
       faraday-multipart (~> 1.0, >= 1.0.3)
       marcel (~> 1.0, >= 1.0.2)
@@ -50,7 +50,7 @@ GEM
       yard
 
 PLATFORMS
-  arm64-darwin-21
+  ruby
 
 DEPENDENCIES
   cloudflare_dev!
