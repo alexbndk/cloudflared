@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloudflared (0.1.0)
+    cloudflared (0.1.1)
       faraday (~> 2.1.0)
       faraday-multipart (~> 1.0, >= 1.0.3)
       marcel (~> 1.0, >= 1.0.2)
