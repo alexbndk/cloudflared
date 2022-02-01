@@ -23,21 +23,49 @@ Or install it yourself as:
 
     $ gem install cloudflared
 
+## Setup 
+
+You will need the following keys from your Cloudflare account: 
+
+
 ## Usage
 
 Working with Cloudflare Images:
 
 ```ruby
-client = Cloudflared::Client.new(api_key: "foo", account_id: "bar", images_hash: "baz")
+client = Cloudflared::Client.new(api_key: "foo", account_id: "bar", images_hash: "baz", images_default_hash: "foobar")
 client.images.delete(file_id: "1234")
 client.images.details(file_id: "1234")
 client.images.direct_upload_url
 client.images.download(file_id: "1234")
 client.images.list
-client.images.signed_url(file_id: "1234", key: "default_key", expiry_seconds: 60 * 15)
+client.images.signed_url(file_id: "1234", expiry_seconds: 60 * 15)
 client.images.stats
 client.images.update(file_id: "1234", requireSignedURLs: true)
 client.images.upload(file: "/path/to/file", requireSignedURLs: true)
+```
+
+#### Rails and Pre-configured client settings
+
+If you're using this in rails (or want to pre-configure settings), you can pre-configure the client settings via an initializer by adding the following:
+
+```ruby
+# config/initializers/cloudflared.rb
+ 
+Cloudflared.configure do |config|
+  config.api_key = "key"
+  config.account_id = "key"
+  config.images_hash = "key"
+  config.images_default_key = "key"
+  config.adapter = Faraday.default_adapter  # optional, defaults to Faraday.default_adapter
+end
+```
+
+If pre-configured, the client is available via the following shortcut: 
+
+```ruby
+client = Cloudflared.client
+client.images.details(file_id: "1234")
 ```
 
 ## Development

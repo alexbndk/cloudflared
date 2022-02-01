@@ -11,7 +11,11 @@ require "cloudflared"
 # require "pry"
 # Pry.start
 
-@client = Cloudflared::Client.new(account_id: ENV["CLOUDFLARE_IMAGES_ACCOUNT_ID"], api_key: ENV["CLOUDFLARE_IMAGES_API_KEY"])
+@client = Cloudflared::Client.new(
+  account_id: ENV["CLOUDFLARE_IMAGES_ACCOUNT_ID"],
+  api_key: ENV["CLOUDFLARE_IMAGES_API_KEY"],
+  images_hash: ENV["CLOUDFLARE_IMAGES_HASH"],
+  images_default_key: ENV["CLOUDFLARE_IMAGES_DEFAULT_KEY"])
 
 require "irb"
 IRB.start(__FILE__)

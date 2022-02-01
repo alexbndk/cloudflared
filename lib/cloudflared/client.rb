@@ -4,7 +4,7 @@ module Cloudflared
   class Client
     BASE_URL = "https://api.cloudflare.com/client/v4/accounts"
 
-    attr_reader :api_key, :account_id, :adapter, :images_hash
+    attr_reader :api_key, :account_id, :adapter, :images_hash, :images_default_key, :stubs
 
     # Initializes a new Cloudflare client.
     #
@@ -17,6 +17,9 @@ module Cloudflared
     # @!attribute images_hash
     #   @return [String] The Cloudflare images hash found on the images dashboard. This is used for image delivery urls.
     #
+    # @!attribute images_default_key
+    #   @return [String] The default key for signing private images
+    #
     # @!attribute adapter
     #   @return [Symbol] The Faraday adapter to use
     #
@@ -24,11 +27,12 @@ module Cloudflared
     #   @return [Symbol] Stubs for use in testing
     #
     # @return [Cloudflared]
-    def initialize(api_key:, account_id:, images_hash: nil, adapter: Faraday.default_adapter, stubs: nil)
+    def initialize(api_key:, account_id:, images_hash:, images_default_key:, adapter: Faraday.default_adapter, stubs: nil)
       @api_key = api_key
       @adapter = adapter
       @account_id = account_id
       @images_hash = images_hash
+      @images_default_key = images_default_key
       @stubs = stubs
     end
 

@@ -24,4 +24,8 @@ class Minitest::Test
       stub.send(*arguments) { |_env| response }
     end
   end
+
+  def create_stubbed_client(stub, api_key: "fake", account_id: "fake", images_hash: "fake", images_default_key: "fake")
+    Cloudflared::Client.new(api_key: api_key, account_id: account_id, images_hash: images_hash, images_default_key: images_default_key, stubs: stub)
+  end
 end

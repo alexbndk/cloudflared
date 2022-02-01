@@ -34,13 +34,13 @@ module Cloudflared
       "#{IMAGE_DELIVERY_URL}/#{@client.images_hash}/#{path}"
     end
 
-    def signed_url(path, key:, expiry_seconds: FIFTEEN_MINUTES)
+    def signed_url(path, expiry_seconds: FIFTEEN_MINUTES)
       # The path uses the image + the file_id (and a variant if passed through)
       path = path[1..] if path[0] == "/"
       path = "#{@client.images_hash}/#{path}"
 
       # Calculate the hexdigest with the  leading slash
-      sig = OpenSSL::HMAC.hexdigest("SHA256", key, "/#{path}")
+      sig = OpenSSL::HMAC.hexdigest("SHA256", @client.images_default_key, "/#{path}")
 
       # Calculate the seconds since the epoch in the future
       exp = Time.new.to_i + expiry_seconds
