@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
-  spec.add_dependency "faraday", "~> 2.1.0"
+  spec.add_dependency "faraday", "~> 2.7.4"
   spec.add_dependency "faraday-multipart", "~> 1.0", ">= 1.0.3"
   spec.add_dependency "marcel", "~> 1.0", ">= 1.0.2"
 
